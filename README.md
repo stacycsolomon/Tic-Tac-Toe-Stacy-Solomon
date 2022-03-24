@@ -3,6 +3,7 @@
 A fun interactive app that allows a user to sign up, sign in and play the game of Tic Tac Toe. 
 
 ## Deployed Application:
+https://github.com/stacycsolomon/Tic-Tac-Toe-Stacy-Solomon
 
 ## Planning 
 
