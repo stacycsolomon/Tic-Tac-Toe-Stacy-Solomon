@@ -42,11 +42,25 @@ const onSignOutFailure = function () {
   $('$auth-display').html('<p>Try again</p>')
 }
 
-const onNewGameSuccess = function () {
+const onNewGameSuccess = function (response) {
   $('#auth-display').html('<p>Game successfully created</p>')
+  console.log(response)
+  store.game = response.game
+  store.game.cells = response.game.cells
 }
 
 const onNewGameFailure = function () {
+  $('#auth-display').html('<p>Try again!</p>')
+}
+
+const onUpdateGameSuccess = function (response) {
+  $('#auth-display').html('<p>Game successfully updated</p>')
+  console.log(response)
+  store.game._id = response.game.id
+  store.game.cells = response.game.cells
+}
+
+const onUpdateGameFailure = function () {
   $('#auth-display').html('<p>Try again!</p>')
 }
 
@@ -60,5 +74,7 @@ module.exports = {
   onSignOutSuccess,
   onSignOutFailure,
   onNewGameSuccess,
-  onNewGameFailure
+  onNewGameFailure,
+  onUpdateGameSuccess,
+  onUpdateGameFailure
 }

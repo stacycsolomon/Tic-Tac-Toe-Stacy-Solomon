@@ -3,24 +3,7 @@
 const getFormFields = require('../../lib/get-form-fields')
 const authUi = require('./ui.js')
 const authApi = require('./api.js')
-
-// const boxIndex = event.target.getAttribute('data-cell-index')
-// const gameBoard = ['', '', '', '', '', '', '', '', '']
-// const winner = false
-// const playerX = 'X'
-// const playerO = 'O'
-
-// // make an array for the possible wins
-// const wins = [
-//   [0, 1, 2],
-//   [3, 4, 5],
-//   [6, 7, 8],
-//   [0, 3, 6],
-//   [1, 4, 7],
-//   [2, 5, 8],
-//   [0, 4, 8],
-//   [2, 4, 6]
-// ]
+const store = require('../store')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -77,24 +60,28 @@ const onNewGame = function (event) {
   event.preventDefault()
   console.log('game created')
 
-  authApi.createGame()
-    .then(() => authUi.onNewGameSuccess())
+  authApi
+    .newGame()
+    .then((response) => authUi.onNewGameSuccess(response))
     .catch(() => authUi.onNewGameFailure())
 }
 
-// const onBoxClicked = function (event) {
-//   console.log('click')
-//   // place mark
-//   // check for win
-//   // check for draw
-//   // switch turn
-// }
+const onUpdateGame = function (event) {
+  event.preventDefault()
+  console.log('updated game')
 
+  authApi
+    .updateGame()
+    .then((response) => console.log(response))
+    .then((response) => { store.game = response.game })
+    .then((response) => authUi.onUpdateGameSuccess(response))
+    .catch(() => authUi.onUpdateGameFailure())
+}
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
   onChangePassword,
-  onNewGame
-  // onBoxClicked
+  onNewGame,
+  onUpdateGame
 }

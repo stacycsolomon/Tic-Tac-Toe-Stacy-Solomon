@@ -48,18 +48,26 @@ const newGame = function (data) {
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
-    data
+    data: {}
   })
 }
 
-const playerMoves = function (data) {
+const updateGame = function (index, value, over) {
   return $.ajax({
-    url: 'https://tic-tac-toe-api-development.herokuapp.com/games/' + store.game.id,
+    url: 'https://tic-tac-toe-api-development.herokuapp.com/games/' + store.game._id,
     method: 'PATCH',
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
-    data
+    data: {
+      game: {
+        cell: {
+          index,
+          value
+        },
+        over
+      }
+    }
   })
 }
 
@@ -69,5 +77,5 @@ module.exports = {
   signOut,
   changePassword,
   newGame,
-  playerMoves
+  updateGame
 }
