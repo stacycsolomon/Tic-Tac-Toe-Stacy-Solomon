@@ -2,21 +2,16 @@
 // const example = require('./example')
 const authEvents = require('./auth/events.js')
 
-// use require without a reference to ensure a file is bundled
-// require('./example')
+$(() => { $('#sign-up-form').on('submit', authEvents.onSignUp) })
+$(() => { $('#sign-in-form').on('submit', authEvents.onSignIn) })
+$(() => { $('#sign-out-button').on('click', authEvents.onSignOut) })
+$(() => { $('#change-password-form').on('submit', authEvents.onChangePassword) })
+$(() => { $('#new-game').on('click', authEvents.onNewGame) })
+$(() => { $('.box').on('click', authEvents.onBoxClicked) })
+$(() => { $('#play-again').on('click', authEvents.onPlayAgain) })
+$(() => { $('#quit-game').on('click', authEvents.onQuitGame) })
 
-$(() => {
-  $('#sign-up-form').on('submit', authEvents.onSignUp)
-})
-
-$(() => {
-  $('#sign-in-form').on('submit', authEvents.onSignIn)
-})
-
-$(() => {
-  $('#sign-out-button').on('click', authEvents.onSignOut)
-})
-
-$(() => {
-  $('#change-password-form').on('submit', authEvents.onChangePassword)
-})
+$(() => { $(('#login').hide('click', authEvents.onSignIn)) })
+$(() => { $(('#sign-up-form').hide()) })
+$(() => { $(('#sign-out-form').hide()) })
+$(() => { $(('#sign-in-form').hide()) })

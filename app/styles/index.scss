@@ -1,1 +1,105 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+$font-family: 'Playfair Display', serif;
+$body-bg-color: white;
+$box-bg-color: rgba(133, 8, 165, 0.383);
+$box-border-color: black;
+$alt-bg-color: rgba(168, 101, 231, 0.048);
+
+h1 {
+    text-align: center;   
+}
+body {
+  background-color: $body-bg-color;
+  font-family: $font-family;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/*Login Window*/
+
+.login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login.hide{
+    display: none;
+}
+
+
+#new-game {
+    padding: 10px 20px;
+    background-color:rgba(57, 8, 104, 0.918);
+    color: lightgray;
+}
+
+/*Main Game Board*/
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    background-color: $box-bg-color;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.box:first-child,
+.box:nth-child(2),
+.box:nth-child(3) {
+    border-top: none;
+}
+
+.box:nth-child(3n + 1) {
+    border-left: none;
+}
+.box:nth-child(3n + 3) {
+    border-right: none;
+}
+.box:last-child,
+.box:nth-child(7),
+.box:nth-child(8) {
+    border-bottom: none;
+}
+
+.game-options {
+    display: flex;
+}
+
+h1, h2 {
+  font-family: $font-family;
+}
+
+.alt-color {
+  background-color: $alt-bg-color;
+}
+
+.x-hover:hover::after {
+    content: "X";
+    opacity: 0.4;
+
+}
+
+.o-hover:hover::after {
+    content: "O";
+    opacity: 0.4;
+}

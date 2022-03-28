@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Tic Tac Toe</title>
+  <head>
+    <title>Tic Tac Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -10,33 +10,68 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h3>Sign Up</h3>
-    <form id="sign-up-form">
-      <input name="credentials[email]" type="email" placeholder="email@email.com">
-      <input name="credentials[password]" type="password"  placeholder="enter password">
-      <input name="credentials[password_confirmation]" type="password" placeholder="enter password">
-      <button type="submit">Sign Up</button>
-    </form>
-    <h3>Sign In</h3>
-    <form id="sign-in-form">
-      <input name="credentials[email]" type="email" placeholder="email@email.com">
-      <input name="credentials[password]" type="password" placeholder="enter password">
-      <button type="submit">Sign In</button>
-    </form>
-    
-    <h3>Sign Out</h3>
-    <button type="submit" id="sign-out-button">Sign Out</button>
+  </head>
+  <header>
+    <h1>Tic Tac Toe</h1>
+  </header>
+  <body>
+    <!--start window-->
 
+    <div class="login">
+      <h4>Sign Up</h4>
+        <form id="sign-up-form">
+          <input name="credentials[email]" type="email" placeholder="email@email.com">
+          <input name="credentials[password]" type="password"  placeholder="enter password">
+          <input name="credentials[password_confirmation]" type="password" placeholder="enter password">
+          <button type="submit" class="button">Sign Up</button>
+        </form>
+        <br>
+      <h4>Sign In</h4>
+        <form id="sign-in-form">
+          <input name="credentials[email]" type="email" placeholder="email@email.com">
+          <input name="credentials[password]" type="password" placeholder="enter password">
+          <button type="submit" class="button">Sign In</button>
+        </form>
+        <br>
+      <h4>Sign Out</h4>
+          <button type="submit" id="sign-out-button" class="button">Sign Out</button>
+        <br>
+      <h4>Change PW</h4>
+        <form id="change-password-form">
+          <input name="passwords[old]" type="password" placeholder="enter old password">
+          <input name="passwords[new]" type="password" placeholder="enter new password">
+        <button type="submit" class="button">Change Password</button>
+        </form>
+      <section id="auth-display"></section>
 
-    <h3>Change PW</h3>
-    <form id="change-password-form">
-      <input name="passwords[old]" type="password" placeholder="enter old password">
-      <input name="passwords[new]" type="password" placeholder="enter new password">
-      <button type="submit">Change Password</button>
-    </form>
-    
-    <section id="auth-display"></section>
-    </body>
+      <br>
+      <button class="new-game hidden" id="new-game">New Game</button>
+       
+      
+    </div>
+ <br>
+  
+    <!--game board-->
+
+     <div class="board" id="board">
+         <div class="box" data-cell-index="0"></div>
+         <div class="box" data-cell-index="1"></div>
+         <div class="box" data-cell-index="2"></div>
+         <div class="box" data-cell-index="3"></div>
+         <div class="box" data-cell-index="4"></div>
+         <div class="box" data-cell-index="5"></div>
+         <div class="box" data-cell-index="6"></div>
+         <div class="box" data-cell-index="7"></div>
+         <div class="box" data-cell-index="8"></div>
+      </div>
+<br>
+
+      <div class="win">
+        <div data-winning-message-text></div>
+      </div>
+      <div class="game-options">
+      <button id="play-again" class="button">Play Again!</button>
+      <button id="quit-game" class="button">Quit Game</button>
+      </div>
+  </body>
 </html>
