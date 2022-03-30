@@ -11,8 +11,10 @@ Bootstrap
 jQuery
 Ajax
 Auth & Game Api
-Deployed Application:
-https://github.com/stacycsolomon/Tic-Tac-Toe-Stacy-Solomon
+
+## Deployed Application:
+
+https://stacycsolomon.github.io/Tic-Tac-Toe-Stacy-Solomon/
 
 ## Planning
 
