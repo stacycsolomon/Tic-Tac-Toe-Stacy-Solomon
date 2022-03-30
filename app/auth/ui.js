@@ -22,16 +22,18 @@ const onSignInSuccess = function (response) {
   $('#sign-in-form').hide()
   $('#sign-up-form').hide()
   $('#new-game').show()
+  $('#change-password-form').show()
 }
 
 const onSignInFailure = function () {
   $('#auth-display').html('<p>Check your email/password</p>')
 }
 
-const onChangePasswordSuccess = function () {
+const onChangePasswordSuccess = function (data) {
   $('#auth-display').html('<p>Password changed</p>')
 
   $('form').trigger('reset')
+  $('#change-password-form').hide()
 }
 
 const onChangePasswordFailure = function () {
@@ -56,6 +58,7 @@ const onNewGameSuccess = function (response) {
   $('#new-game').hide()
   $('#play-again').show()
   $('#sign-out-button').show()
+  $('#change-password-form').hide()
 
   console.log(response)
   store.game = response.game
