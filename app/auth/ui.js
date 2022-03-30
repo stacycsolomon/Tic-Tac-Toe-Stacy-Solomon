@@ -46,7 +46,8 @@ const onNewGameSuccess = function (response) {
   $('#auth-display').html('<p>Game successfully created</p>')
   console.log(response)
   store.game = response.game
-  store.game.cells = response.game.cells
+  // store.game._id = response.game.id
+  // store.game.cells = response.game.cells
 }
 
 const onNewGameFailure = function () {
@@ -56,7 +57,7 @@ const onNewGameFailure = function () {
 const onUpdateGameSuccess = function (response) {
   $('#auth-display').html('<p>Game successfully updated</p>')
   console.log(response)
-  store.game._id = response.game.id
+  store.game = response.game
   store.game.cells = response.game.cells
 }
 

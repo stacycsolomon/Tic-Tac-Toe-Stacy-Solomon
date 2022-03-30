@@ -1,15 +1,58 @@
 
-const store = require('../store')
-// const authApi = require('./../auth/api.js')
+const store = require('../store.js')
+const authApi = require('../auth/api.js')
+const authUi = require('../auth/ui.js')
 
 const playerX = 'X'
 const playerO = 'O'
-
-// const over = false
 let currentPlayer = playerX
-const gameBoard = ['', '', '', '', '', '', '', '']
+const cells = ['', '', '', '', '', '', '', '']
+let gameOver = false
 
-// const wins = [
+const onBoxClicked = function (event) {
+  const boxIndex = event.target.getAttribute('data-cell-index')
+
+  cells[event.target.id] = currentPlayer
+  event.target.innerText = currentPlayer
+
+  authApi
+    .updateGame(boxIndex, currentPlayer, gameOver)
+  // .then((response) => console.log(response))
+    .then((response) => authUi.onUpdateGameSuccess(response))
+    // .then((response) => { store.game = response.game })
+    // .then(() => console.log(store.game))
+    .catch(() => authUi.onUpdateGameFailure())
+
+  if (currentPlayer === playerX) {
+    store.game.cells[boxIndex] = playerX
+    $(this).unbind()
+
+    // check for winner before reassigning player
+
+    if (checkWinner(currentPlayer)) {
+      $('#winning-message').text('Congratulations ' + currentPlayer + ' you win!')
+      $('.box').unbind()
+      return
+    }
+    // console.log(checkWinner(currentPlayer))
+    currentPlayer = playerO
+  } else {
+    store.game.cells[boxIndex] = playerO
+    $(this).unbind()
+
+    if (checkWinner(currentPlayer)) {
+      $('#winning-message').text('Congratulations ' + currentPlayer + ' you win!')
+      $('.box').unbind()
+      return
+    }
+    // console.log(checkWinner(currentPlayer))
+
+    currentPlayer = playerX
+  }
+  console.log(boxIndex)
+}
+
+// const winning_combo = [
 //   [0, 1, 2],
 //   [3, 4, 5],
 //   [6, 7, 8],
@@ -20,43 +63,65 @@ const gameBoard = ['', '', '', '', '', '', '', '']
 //   [2, 4, 6]
 // ]
 
-const onBoxClicked = function (event) {
-  const boxIndex = event.target.getAttribute('data-cell-index')
-  console.log('click')
-
-  gameBoard[event.target.id] = currentPlayer
-
-  // switch turns
-
-  event.target.innerText = currentPlayer
-  if (currentPlayer === playerX) {
-    store.game.cells[boxIndex] = playerX
-    $(this).unbind()
-    currentPlayer = playerO
-    console.log(store.game.cells)
-  } else {
-    store.game.cells[boxIndex] = playerO
-    $(this).unbind()
-    currentPlayer = playerX
-    console.log(store.game.cells)
+const checkWinner = function () {
+  if (store.game.cells[0] === currentPlayer) {
+    if (store.game.cells[1] === currentPlayer && store.game.cells[2] === currentPlayer) {
+      console.log(currentPlayer + ' wins!')
+      gameOver = true
+      return true
+    } if (store.game.cells[3] === currentPlayer && store.game.cells[6] === currentPlayer) {
+      console.log(currentPlayer + ' wins!')
+      gameOver = true
+      return true
+    } if (store.game.cells[4] === currentPlayer && store.game.cells[8] === currentPlayer) {
+      console.log(currentPlayer + ' wins!')
+      gameOver = true
+      return true
+    }
+  } else if (store.game.cells[8] === currentPlayer) {
+    if (store.game.cells[2] === currentPlayer && store.game.cells[5] === currentPlayer) {
+      console.log(currentPlayer + ' wins!')
+      gameOver = true
+      return true
+    } if (store.game.cells[6] === currentPlayer && store.game.cells[7] === currentPlayer) {
+      console.log(currentPlayer + ' wins!')
+      gameOver = true
+      return true
+    }
+  } else if (store.game.cells[4] === currentPlayer) {
+    if (store.game.cells[1] === currentPlayer && store.game.cells[7] === currentPlayer) {
+      console.log(currentPlayer + ' wins!')
+      gameOver = true
+      return true
+    } if (store.game.cells[3] === currentPlayer && store.game.cells[5] === currentPlayer) {
+      console.log(currentPlayer + ' wins!')
+      gameOver = true
+      return true
+    }
+  } else if ((store.game.cells[2] === currentPlayer) && store.game.cells[4] === currentPlayer && store.game.cells[6] === currentPlayer) {
+    console.log(currentPlayer + ' wins!')
+    gameOver = true
+    return true
   }
-
-  //   authApi.updateGame(index, value, over)
-  //     .then((response) => { store.game = response.game })
-  console.log(boxIndex)
-  // place mark
-  // check for win
-  // check for draw
-  // switch turn
 }
 
 const onPlayAgain = function () {
+  store.game.cells = ['', '', '', '', '', '', '', '']
+
   $('.box').text('')
-  $('.box').bind('click', onBoxClicked)
+  $('.box').on('click', onBoxClicked)
+  currentPlayer = playerX
+
+  authApi
+    .newGame()
+    // .then((response) => { store.game = response.game })
 }
+
 module.exports = {
 
   onBoxClicked,
+  checkWinner,
   onPlayAgain
+  //   checkGameOver
 
 }
