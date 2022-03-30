@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tic Tac Toe</title>
+    <title> Tic Tac Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,32 +12,30 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
   </head>
   <header>
-    <h1>Tic Tac Toe</h1>
+       <h1>Welcome to Tic Tac Toe</h1>
   </header>
   <body>
-    <!--start window-->
-
-    <div class="login">
-      <h4>Sign Up</h4>
+      <br>
+    <section id="login">
         <form id="sign-up-form">
+          <h5>Create an account here</h5>
           <input name="credentials[email]" type="email" placeholder="email@email.com">
           <input name="credentials[password]" type="password"  placeholder="enter password">
           <input name="credentials[password_confirmation]" type="password" placeholder="enter password">
           <button type="submit" class="button">Sign Up</button>
         </form>
-        <br>
-      <h4>Sign In</h4>
+       <br>
         <form id="sign-in-form">
           <input name="credentials[email]" type="email" placeholder="email@email.com">
           <input name="credentials[password]" type="password" placeholder="enter password">
           <button type="submit" class="button">Sign In</button>
         </form>
-        <br>
-      <h4>Sign Out</h4>
-          <button type="submit" id="sign-out-button" class="button">Sign Out</button>
-        <br>
-      <h4>Change PW</h4>
+       <br>
+    </section>
+
+  
         <form id="change-password-form">
+          <h4>Change PW</h4>
           <input name="passwords[old]" type="password" placeholder="enter old password">
           <input name="passwords[new]" type="password" placeholder="enter new password">
         <button type="submit" class="button">Change Password</button>
@@ -45,14 +43,13 @@
       <section id="auth-display"></section>
 
       <br>
-      <button class="new-game hidden" id="new-game">New Game</button>
+      <button class="button" id="new-game">New Game</button>
        
       
-    </div>
+      
  <br>
   
-    <!--game board-->
-
+    <section id="game">
      <div class="board" id="board">
          <div class="box" data-cell-index="0"></div>
          <div class="box" data-cell-index="1"></div>
@@ -65,17 +62,11 @@
          <div class="box" data-cell-index="8"></div>
       </div>
 <br>
-
-      
-
-      <div class="game-options">
       <button id="play-again" class="button">Play Again!</button>
-      <button id="quit-game" class="button">Quit Game</button>
-      </div>
-
-<br>
-
-  <section id="winning-message"></section>
-
+      <button type="submit" id="sign-out-button" class="button">Sign Out</button>
+   </section>
+ <br>
+ <br>
+    <section id="winning-message"></section>
   </body>
 </html>

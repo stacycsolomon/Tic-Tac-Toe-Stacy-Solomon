@@ -3,9 +3,10 @@
 const store = require('../store.js')
 
 const onSignUpSuccess = function () {
-  $('#auth-display').html('<p>Welcome to Tic Tac Toe!</p>')
+  $('#auth-display').html('<p>Welcome to Tic Tac Toe! Sign in to start playing!</p>')
 
   $('form').trigger('reset')
+  $('#sign-up-form').hide()
 }
 
 const onSignUpFailure = function () {
@@ -13,11 +14,14 @@ const onSignUpFailure = function () {
 }
 
 const onSignInSuccess = function (response) {
-  $('#auth-display').html('<p>Ready to play!</p>')
+  $('#auth-display').html('<p>Click on new game to begin playing!</p>')
   console.log(response)
   store.user = response.user
 
   $('form').trigger('reset')
+  $('#sign-in-form').hide()
+  $('#sign-up-form').hide()
+  $('#new-game').show()
 }
 
 const onSignInFailure = function () {
@@ -36,6 +40,9 @@ const onChangePasswordFailure = function () {
 
 const onSignOutSuccess = function () {
   $('#auth-display').html('<p>Thanks for playing!</p>')
+  $('#sign-in-form').show()
+  $('#game').hide()
+  $('#winning-message').text('')
 }
 
 const onSignOutFailure = function () {
@@ -43,7 +50,13 @@ const onSignOutFailure = function () {
 }
 
 const onNewGameSuccess = function (response) {
-  $('#auth-display').html('<p>Game successfully created</p>')
+  $('#auth-display').html('<p>Player X make your move</p>')
+  $('.board').show()
+  $('#game').show()
+  $('#new-game').hide()
+  $('#play-again').show()
+  $('#sign-out-button').show()
+
   console.log(response)
   store.game = response.game
   // store.game._id = response.game.id
@@ -55,7 +68,7 @@ const onNewGameFailure = function () {
 }
 
 const onUpdateGameSuccess = function (response) {
-  $('#auth-display').html('<p>Game successfully updated</p>')
+  $('#auth-display').html('<p></p>')
   console.log(response)
   store.game = response.game
   store.game.cells = response.game.cells

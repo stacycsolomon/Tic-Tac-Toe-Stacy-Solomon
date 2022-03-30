@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 $font-family: 'Playfair Display', serif;
-$body-bg-color: white;
+$body-bg-color: rgba(133, 8, 165, 0.383);
 $box-bg-color: rgba(133, 8, 165, 0.383);
 $box-border-color: black;
 $alt-bg-color: rgba(168, 101, 231, 0.048);
@@ -22,7 +22,6 @@ body {
 }
 
 
-
 /*Login Window*/
 
 .login {
@@ -36,6 +35,9 @@ body {
     display: none;
 }
 
+.button:hover {
+    transform: translateY(-2px)
+}
 
 #new-game {
     padding: 10px 20px;
@@ -61,7 +63,8 @@ body {
     justify-items: center;
     align-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 3em;
+    font-family: $font-family;
 }
 
 .box:first-child,
@@ -94,13 +97,6 @@ h1, h2 {
   background-color: $alt-bg-color;
 }
 
-.x-hover:hover::after {
-    content: "X";
-    opacity: 0.4;
-
-}
-
-.o-hover:hover::after {
-    content: "O";
-    opacity: 0.4;
+#winning-message {
+    font-size: 30px
 }

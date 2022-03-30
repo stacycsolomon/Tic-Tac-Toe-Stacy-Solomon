@@ -3,18 +3,18 @@
 const authEvents = require('./auth/events.js')
 const gamesEvents = require('./games/events.js')
 
-$(() => { $('#sign-up-form').on('submit', authEvents.onSignUp) })
-$(() => { $('#sign-in-form').on('submit', authEvents.onSignIn) })
-$(() => { $('#sign-out-button').on('click', authEvents.onSignOut) })
-$(() => { $('#change-password-form').on('submit', authEvents.onChangePassword) })
-$(() => { $('#new-game').on('click', authEvents.onNewGame) })
+$(() => {
+  $('#sign-up-form').on('submit', authEvents.onSignUp)
+  $('#sign-in-form').on('submit', authEvents.onSignIn)
+  $('#change-password-form').on('submit', authEvents.onChangePassword)
+  $('#sign-out-button').on('click', authEvents.onSignOut)
+  $('#play-again').on('click', gamesEvents.onPlayAgain)
+  $('#new-game').on('click', authEvents.onNewGame)
+  $('.box').on('click', gamesEvents.onBoxClicked)
 
-$(() => { $('#play-again').on('click', gamesEvents.onPlayAgain) })
-$(() => { $('.box').on('click', gamesEvents.onBoxClicked) })
-
-$(() => { $('#quit-game').on('click', gamesEvents.onQuitGame) })
-
-// $(() => { $(('#login').hide('click', authEvents.onSignIn)) })
-// $(() => { $(('#sign-up-form').hide()) })
-// $(() => { $(('#sign-out-form').hide()) })
-// $(() => { $(('#sign-in-form').hide()) })
+  $('.board').hide()
+  $('#new-game').hide()
+  $('#play-again').hide()
+  $('#sign-out-button').hide()
+  $('#change-password-form').hide()
+})

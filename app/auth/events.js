@@ -3,7 +3,7 @@
 const getFormFields = require('../../lib/get-form-fields')
 const authUi = require('./ui.js')
 const authApi = require('./api.js')
-const store = require('../store.js')
+// const store = require('../store.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -63,13 +63,8 @@ const onNewGame = function (event) {
   authApi
     .newGame()
     .then((response) => authUi.onNewGameSuccess(response))
-    // .then((response) => { store.game = response.game })
     .catch(() => authUi.onNewGameFailure())
 }
-
-// const onUpdateGame = function (event) {
-//   event.preventDefault()
-//   console.log('updated game')
 
 module.exports = {
   onSignUp,
