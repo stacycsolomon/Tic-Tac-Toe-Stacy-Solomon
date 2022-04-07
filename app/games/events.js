@@ -100,10 +100,22 @@ const onPlayAgain = function (event) {
     .catch(() => authUi.onNewGameFailure())
 }
 
+const onNewGame = function (event) {
+  event.preventDefault()
+  console.log('game created')
+  currentPlayer = playerX
+  gameOver = false
+
+  authApi.newGame()
+    .then((response) => authUi.onNewGameSuccess(response))
+    .catch(() => authUi.onNewGameFailure())
+  $('.box').on('click', onBoxClicked)
+}
 module.exports = {
 
   onBoxClicked,
   checkWinner,
-  onPlayAgain
+  onPlayAgain,
+  onNewGame
 
 }

@@ -56,20 +56,9 @@ const onChangePassword = function (event) {
     .catch(() => authUi.onChangePasswordFailure())
 }
 
-const onNewGame = function (event) {
-  event.preventDefault()
-  console.log('game created')
-
-  authApi
-    .newGame()
-    .then((response) => authUi.onNewGameSuccess(response))
-    .catch(() => authUi.onNewGameFailure())
-}
-
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
-  onChangePassword,
-  onNewGame
+  onChangePassword
 }

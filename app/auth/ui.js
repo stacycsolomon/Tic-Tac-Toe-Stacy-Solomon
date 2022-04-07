@@ -43,8 +43,12 @@ const onChangePasswordFailure = function () {
 const onSignOutSuccess = function () {
   $('#auth-display').html('<p>Thanks for playing!</p>')
   $('#sign-in-form').show()
+  $('#sign-up-form').show()
   $('#game').hide()
   $('#winning-message').text('')
+  $('#tie-message').text('')
+  $('.box').text('')
+  $('form').trigger('reset')
 }
 
 const onSignOutFailure = function () {
@@ -59,11 +63,11 @@ const onNewGameSuccess = function (response) {
   $('#play-again').show()
   $('#sign-out-button').show()
   $('#change-password-form').hide()
+  $('#winning-message').text('')
+  $('#tie-message').text('')
 
   console.log(response)
   store.game = response.game
-  // store.game._id = response.game.id
-  // store.game.cells = response.game.cells
 }
 
 const onNewGameFailure = function () {

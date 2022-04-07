@@ -9,9 +9,7 @@ $(() => {
   $('#change-password-form').on('submit', authEvents.onChangePassword)
   $('#sign-out-button').on('click', authEvents.onSignOut)
   $('#play-again').on('click', gamesEvents.onPlayAgain)
-  $('#new-game').on('click', authEvents.onNewGame)
-  $('.box').on('click', gamesEvents.onBoxClicked)
-
+  $('#new-game').on('click', gamesEvents.onNewGame)
   $('.board').hide()
   $('#new-game').hide()
   $('#play-again').hide()
