@@ -7,7 +7,7 @@ const playerX = 'X'
 const playerO = 'O'
 let currentPlayer = playerX
 let gameOver = false
-
+let clicks = 0
 const cells = ['', '', '', '', '', '', '', '']
 
 const onBoxClicked = function (event) {
@@ -19,6 +19,7 @@ const onBoxClicked = function (event) {
     .updateGame(boxIndex, currentPlayer, gameOver)
     .then((response) => authUi.onUpdateGameSuccess(response))
     .catch(() => authUi.onUpdateGameFailure())
+  clicks = clicks + 1
 
   if (currentPlayer === playerX) {
     store.game.cells[boxIndex] = playerX
@@ -44,44 +45,32 @@ const onBoxClicked = function (event) {
 }
 
 const checkWinner = function () {
-  if (store.game.cells[0] === currentPlayer) {
-    if (store.game.cells[1] === currentPlayer && store.game.cells[2] === currentPlayer) {
-      console.log(currentPlayer + ' wins!')
-      gameOver = true
-      return true
-    } if (store.game.cells[3] === currentPlayer && store.game.cells[6] === currentPlayer) {
-      console.log(currentPlayer + ' wins!')
-      gameOver = true
-      return true
-    } if (store.game.cells[4] === currentPlayer && store.game.cells[8] === currentPlayer) {
-      console.log(currentPlayer + ' wins!')
-      gameOver = true
-      return true
-    }
-  } else if (store.game.cells[8] === currentPlayer) {
-    if (store.game.cells[2] === currentPlayer && store.game.cells[5] === currentPlayer) {
-      console.log(currentPlayer + ' wins!')
-      gameOver = true
-      return true
-    } if (store.game.cells[6] === currentPlayer && store.game.cells[7] === currentPlayer) {
-      console.log(currentPlayer + ' wins!')
-      gameOver = true
-      return true
-    }
-  } else if (store.game.cells[4] === currentPlayer) {
-    if (store.game.cells[1] === currentPlayer && store.game.cells[7] === currentPlayer) {
-      console.log(currentPlayer + ' wins!')
-      gameOver = true
-      return true
-    } if (store.game.cells[3] === currentPlayer && store.game.cells[5] === currentPlayer) {
-      console.log(currentPlayer + ' wins!')
-      gameOver = true
-      return true
-    }
-  } else if ((store.game.cells[2] === currentPlayer) && store.game.cells[4] === currentPlayer && store.game.cells[6] === currentPlayer) {
-    console.log(currentPlayer + ' wins!')
+  if (store.game.cells[0] === currentPlayer && store.game.cells[1] === currentPlayer && store.game.cells[2] === currentPlayer) {
     gameOver = true
     return true
+  } if (store.game.cells[3] === currentPlayer && store.game.cells[4] === currentPlayer && store.game.cells[5] === currentPlayer) {
+    gameOver = true
+    return true
+  } if (store.game.cells[6] === currentPlayer && store.game.cells[7] === currentPlayer && store.game.cells[8] === currentPlayer) {
+    gameOver = true
+    return true
+  } if (store.game.cells[0] === currentPlayer && store.game.cells[3] === currentPlayer && store.game.cells[6] === currentPlayer) {
+    gameOver = true
+    return true
+  } if (store.game.cells[1] === currentPlayer && store.game.cells[4] === currentPlayer && store.game.cells[7] === currentPlayer) {
+    gameOver = true
+    return true
+  } if (store.game.cells[2] === currentPlayer && store.game.cells[5] === currentPlayer && store.game.cells[8] === currentPlayer) {
+    gameOver = true
+    return true
+  } if (store.game.cells[0] === currentPlayer && store.game.cells[4] === currentPlayer && store.game.cells[8] === currentPlayer) {
+    gameOver = true
+    return true
+  } if (store.game.cells[2] === currentPlayer && store.game.cells[4] === currentPlayer && store.game.cells[6] === currentPlayer) {
+    gameOver = true
+    return true
+  } if (clicks >= 9) {
+    $('#winning-message').text("It's a tie! Play Again")
   }
 }
 
@@ -89,6 +78,7 @@ const onPlayAgain = function (event) {
   event.preventDefault()
   store.game.cells = ['', '', '', '', '', '', '', '']
   currentPlayer = playerX
+  clicks = 0
   gameOver = false
   $('.box').text('')
   $('.box').on('click', onBoxClicked)
@@ -102,9 +92,9 @@ const onPlayAgain = function (event) {
 
 const onNewGame = function (event) {
   event.preventDefault()
-  console.log('game created')
   currentPlayer = playerX
   gameOver = false
+  clicks = 0
 
   authApi.newGame()
     .then((response) => authUi.onNewGameSuccess(response))

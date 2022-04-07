@@ -41,7 +41,7 @@ const onChangePasswordFailure = function () {
 }
 
 const onSignOutSuccess = function () {
-  $('#auth-display').html('<p>Thanks for playing!</p>')
+  $('#auth-display').html('<p>Thanks for playing! Sign in to play again!</p>')
   $('#sign-in-form').show()
   $('#sign-up-form').show()
   $('#game').hide()
@@ -64,7 +64,6 @@ const onNewGameSuccess = function (response) {
   $('#sign-out-button').show()
   $('#change-password-form').hide()
   $('#winning-message').text('')
-  $('#tie-message').text('')
 
   console.log(response)
   store.game = response.game
