@@ -4,13 +4,13 @@ A fun interactive single page application (SPA) that allows a user to sign up, s
 
 ## Programs & Languages Used
 
-Javascript
-HTML
-SCSS
-Bootstrap
-jQuery
-Ajax
-Auth & Game Api
+* Javascript
+* HTML
+* SCSS
+* Bootstrap
+* jQuery
+* Ajax
+* Auth & Game Api
 
 
 ## Planning
@@ -26,8 +26,8 @@ My first step was to create a wireframe to outline how I want my game to be set 
   
 ## Wireframes
 
-![Desktop Wireframe](https://imgur.com/a/4PyxVjg)
-![Mobile Version](https://imgur.com/a/GLFe82u)
+![Desktop Wireframe](https://imgur.com/91xLfXV)
+![Mobile Version](https://imgur.com/dYTnAV5)
 
 
 ## Deployed Application:
