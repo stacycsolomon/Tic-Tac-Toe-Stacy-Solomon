@@ -12,13 +12,10 @@ jQuery
 Ajax
 Auth & Game Api
 
-## Deployed Application:
-
-https://stacycsolomon.github.io/Tic-Tac-Toe-Stacy-Solomon/
 
 ## Planning
 
-My first step was to create a wireframe to outline how I want my game to be set up on the webpage. I then created the structure of my webpage using HTML and CSS languages and added forms to store user information to the serve. Authentication Tokens are assigned for each user using POST & DELETE API calls. A new game was then created using a POST games API call, and response stored to the API. The game board was created using HTML and CSS, and event handlers were added to each box within the board using JQuery. I then wrote the game logic using Javascript, updated the game with each move using PATCH API calls. Once a player wins or loses, a display message is read, and they have the option to play again or end the game.
+My first step was to create a wireframe to outline how I want my game to be set up on the webpage. I then created the structure of my webpage using HTML and CSS languages and added forms to store user information to the serve. Authentication Tokens are assigned for each user using POST & DELETE API calls. A new game was then created using a POST API calls, and response stored to the API. The game board was created using HTML and CSS, and event handlers were added to each box within the board using JQuery. I then wrote the game logic using Javascript, updated the game with each move using PATCH API calls. Once a player wins or loses, a display message is read, and they have the option to play again or end the game.
 
 ## User Stories
 
@@ -29,16 +26,10 @@ My first step was to create a wireframe to outline how I want my game to be set 
   
 ## Wireframes
 
-![Desktop Wireframe](https://imgur.com/a/cMvEtId)
-![Mobile Version](https://imgur.com/a/DxYReJz)
+![Desktop Wireframe](https://imgur.com/a/4PyxVjg)
+![Mobile Version](https://imgur.com/a/GLFe82u)
 
-## Unsolved Issues
 
-* There is no display message for a draw/tie.
+## Deployed Application:
 
-## Improvements
-
-* Use DRY code to make my code easier to read and less repetitive
-* Figure out the logic for tied games/draws
-* Add additional styling for user-engagement and responsiveness
-* Keep a running score of the game
+https://stacycsolomon.github.io/Tic-Tac-Toe-Stacy-Solomon/

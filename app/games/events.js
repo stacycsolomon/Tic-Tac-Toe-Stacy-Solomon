@@ -30,6 +30,7 @@ const onBoxClicked = function (event) {
       return
     }
     currentPlayer = playerO
+    // put text here indicating whose turn
   } else {
     store.game.cells[boxIndex] = playerO
     $(this).unbind()
@@ -76,7 +77,7 @@ const checkWinner = function () {
 
 const onPlayAgain = function (event) {
   event.preventDefault()
-  store.game.cells = ['', '', '', '', '', '', '', '']
+  // store.game.cells = ['', '', '', '', '', '', '', '']
   currentPlayer = playerX
   clicks = 0
   gameOver = false
@@ -88,6 +89,7 @@ const onPlayAgain = function (event) {
     .newGame()
     .then((response) => { store.game = response.game })
     .catch(() => authUi.onNewGameFailure())
+  console.log(currentPlayer)
 }
 
 const onNewGame = function (event) {
@@ -100,6 +102,7 @@ const onNewGame = function (event) {
     .then((response) => authUi.onNewGameSuccess(response))
     .catch(() => authUi.onNewGameFailure())
   $('.box').on('click', onBoxClicked)
+  console.log(currentPlayer)
 }
 module.exports = {
 
