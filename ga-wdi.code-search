@@ -1,0 +1,24 @@
+# Query: ga-wdi
+# Flags: RegExp
+# ContextLines: 1
+
+4 results - 3 files
+
+CONTRIBUTING.md:
+  4  Issues labeled ["help
+  5: wanted"](https://github.com/ga-wdi-boston/meta/labels/help%20wanted) are a good
+  6  place to start!
+
+package-lock.json:
+  1  {
+  2:   "name": "Tic Tac Toe",
+  3    "version": "0.0.3",
+
+  7      "": {
+  8:       "name": "Tic Tac Toe",
+  9        "version": "0.0.3",
+
+package.json:
+  1  {
+  2:   "name": "Tic Tac Toe",
+  3    "version": "0.0.3",
