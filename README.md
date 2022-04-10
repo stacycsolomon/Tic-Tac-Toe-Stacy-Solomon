@@ -26,8 +26,8 @@ My first step was to create a wireframe to outline how I want my game to be set 
   
 ## Wireframes
 
-![Desktop Wireframe](https://imgur.com/91xLfXV)
-![Mobile Version](https://imgur.com/dYTnAV5)
+![Desktop Wireframe](https://user-images.githubusercontent.com/100967605/162643386-02bcabc0-3ade-458f-8874-996e0fc5c763.jpg)
+![Mobile Version](https://user-images.githubusercontent.com/100967605/162643432-a658f4e3-6340-4928-a30f-3f923c1e6dfd.jpg)
 
 
 ## Deployed Application:
